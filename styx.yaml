@@ -1,0 +1,38 @@
+# List the packages that you edit locally and want compiled "all the time", by cabal:
+local-packages:
+  styx-test: # package name
+    location: styx-test # location on your disk (directory)
+
+# Optionally, list patched or cutting edge packages that you depend on.
+# These will be compiled only once, by nix.
+source-deps:
+  accelerate:
+    location: https://github.com/tmcdonell/accelerate.git
+    revision: 238f6bf64012bc3639f1c0a75e3b039ff23fd4fe
+  accelerate-llvm:
+    location: https://github.com/tmcdonell/accelerate-llvm.git
+    revision: c87c27712a1d84dbdc37e6d4ab63a321f5bbfe0c
+
+# Optionally, add other haskell nix packages to depend on.
+# Normally this is not necessary, because nix will track the dependencies on its own.
+# Thus this section is mostly useful for throw-away projects which do not have a well-formed cabal file.
+#nix-deps:
+#    - criterion
+#    - gasp
+#    - lens
+#    - statistics
+
+# In case you depend on other non-haskell tools or libs.
+non-haskell-deps:
+    - llvm_7
+    - libffi
+    - cudatoolkit_10
+
+# Optionally, one can ask for a specific version of nixpkgs:
+#nixpkgs:
+#  commit: 8ef3eaeb4e531929ec29a880cb4c67f790e5eb70
+#  sha256: 4d2fae900d2d99ea294f4f412289af77152ac21d7b2e9ff23581ef11ea00831f
+# or like this: url: https://github.com/NixOS/nixpkgs-channels/archive/nixos-14.12.tar.gz
+
+# Optionally, one can ask for a specific version of ghc, as known by nixpkgs
+#default-compiler: ghc801
